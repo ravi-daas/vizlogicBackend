@@ -14,7 +14,8 @@ import { rootRouter } from "./routes/root";
 
 
 const app = express();
-const PORT = 3000;
+// const PORT = process.env.PORT || 3000;
+const PORT: number = Number(process.env.PORT) || 3000;
 
 app.use(express.json()); // ✅ Parses incoming JSON data
 app.use(cors()); // ✅ Enables CORS
@@ -31,6 +32,6 @@ app.use('/inventory', productRouter);
 app.use(ErrorHandler);
 
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
