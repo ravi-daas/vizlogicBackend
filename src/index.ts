@@ -10,6 +10,7 @@ import { clientRouter } from './routes/client';
 import { productRouter } from "./routes/Product";
 import { quotationRouter } from "./routes/quotation";
 import ErrorHandler from "./middleware/errorHandler";
+import { rootRouter } from "./routes/root";
 
 
 const app = express();
@@ -21,6 +22,7 @@ app.use(cors()); // ✅ Enables CORS
 connectToDatabase();
 
 app.use(authRouter);
+app.use('/', rootRouter);
 app.use('/invoice', invoiceRouter);
 app.use('/quotation', quotationRouter);
 app.use('/client', clientRouter);
